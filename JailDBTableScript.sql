@@ -1,10 +1,10 @@
--- drop database `Jail System`;
+drop database `Jail System`;
 
 create database `Jail System`;
 use `Jail System`;
 
 -- complete 
-create table `Visitor`(
+create table `visitor`(
 	`visitor_id` int primary key,
     `first_name` varchar(255) NOT NULL,
     `last_name` varchar(255) NOT NULL,
@@ -14,7 +14,7 @@ create table `Visitor`(
 	`approved` boolean DEFAULT false
 );
 
--- AGE NEEDS TO BE FIXED
+-- AGE needs to be derived as view
 create table `inmate`(
 	`inmate_id` int primary key,
     `cell_id` int,
@@ -25,10 +25,12 @@ create table `inmate`(
     `admission_date` date not null,
     `release_date` date,
     `status` enum('In-Custody', 'Released', 'Transferred', 'Deceased') default 'In-Custody',
-	`security_level` enum('Low', 'Medium', 'High', 'Maximum') NOT NULL,
-	`age` INT GENERATED ALWAYS AS (TIMESTAMPDIFF(year, dob, CURDATE())) VIRTUAL
+	`security_level` enum('Low', 'Medium', 'High', 'Maximum') NOT NULL
+	-- `age` INT GENERATED ALWAYS AS (TIMESTAMPDIFF(year, dob, curdate())
 );
 
+ -- insert into `inmate`(inmate_id, cell_id, first_name, last_name, dob, gender, admission_date, release_date, status, security_level) values(123, 12, 'bob', 'cat', '2000-01-01', 'M', '2023-03-24', '2025-01-01', 'In-Custody', 'Low');
+ 
 -- complete
 create table `staff`(
 	`staff_id` int primary key,
@@ -49,8 +51,8 @@ create table `Offense`(
     `start_date` date not null,
     `end_date` date not null,
     `parole_eligible` boolean default false,
-    `sentence_length` INT GENERATED ALWAYS AS (DATEDIFF(end_date, start_date)) STORED,
-    foreign  key (inmate_id) references Inmate(`inmate_id`)
+    `sentence_length` INT GENERATED ALWAYS AS (TIMESTAMPDIFF(day, end_date, start_date)),
+    foreign key (inmate_id) references inmate(`inmate_id`)
 );
 
 -- complete 
@@ -74,7 +76,7 @@ create table `block`(
 	`capacity` INT CHECK (`capacity` > 0) NOT NULL
 );
 
--- OCCUPANCY NEEDS TO BE FIXED
+-- OCCUPANCY needs to be derived as view
 create table `cell`(
 	`cell_id` int,
     `block_id` int,
@@ -83,3 +85,5 @@ create table `cell`(
 
     PRIMARY KEY (cell_id, block_id)
 );
+
+select @@version;

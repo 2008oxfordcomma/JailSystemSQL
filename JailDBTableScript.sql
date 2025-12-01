@@ -13,13 +13,19 @@ create table `visitor`(
 	`approved` boolean DEFAULT false
 );
 
-insert into visitor values(
-	79345920, 'Alexa', 'Arreola', 'Wife', '952-712-0993', 'alexa.arreola@gmail.com', true
-);
-
-insert into visitor values(
-	9327532, 'Brandy', 'Arreola', 'Mother', '763-392-0212', 'brandythecrazy@protonmail.org', true
-);
+INSERT INTO visitor VALUES
+(79345920, 'Alexa', 'Arreola', 'Wife', '952-712-0993', 'alexa.arreola@gmail.com', true),
+(9327532, 'Brandy', 'Arreola', 'Mother', '763-392-0212', 'brandythecrazy@protonmail.org', true),
+(091382751, 'Jerry', 'Freeborn', 'Boyfriend', '507-992-3209', 'jerrytheharry@hotmail.com', true),
+(60987312, 'Bob', 'Marley', 'Friend', '209-845-9967', 'bobmarley@bobmarley.com', true),
+(50682623, 'Steve', 'Hall', 'Brother', '320-312-8228', 'stevehall@yopmail.com', true),
+(016798328, 'Darrell', 'Kock', 'Son', '218-799-0131', 'fortkockd@gmail.com', false),
+(673189203, 'Carly', 'Johnson', 'Sister', '651-771-0752', 'carly.leeper@yahoo.com', true),
+(0985263, 'Trung', 'Nguyen', 'Brother', '320-521-9090', 'trung.nguyen@go.minnstate.edu', true),
+(072368926, 'Crystal', 'Pace', 'Ex-Wife', '512-722-6767', 'crystalthebrystal@gmail.com', true),
+(275309143, 'Saul', 'Goodman', 'Lawyer', '505-560-4852', 'saulgoodman@saulgoodman.com', true),
+(97234509, 'Manning', 'Payton', 'Cousin', '218-954-7667', 'therealpayton@gmail.com', true),
+(05792835, 'Tracey', 'Montgomery', 'Wife', '320-330-5821', 'traceymont@hotmail.com', true);
 
 insert into visitor(visitor_id, first_name, last_name, relationship, phone_number, approved) values(
 	027598276, 'Mary', 'Blaschka', 'Mother', '612-022-6775', true
@@ -29,48 +35,8 @@ insert into visitor(visitor_id, first_name, last_name) values(
 	059170591, 'Tom', 'Schott'
 );
 
-insert into visitor values(
-	091382751, 'Jerry', 'Freeborn', 'Boyfriend', '507-992-3209', 'jerrytheharry@hotmail.com', true
-);
-
-insert into visitor values(
-	60987312, 'Bob', 'Marley', 'Friend', '209-845-9967', 'bobmarley@bobmarley.com', true
-);
-
-insert into visitor values(
-	50682623, 'Steve', 'Hall', 'Brother', '320-312-8228', 'stevehall@yopmail.com', true
-);
-
-insert into visitor values(
-	016798328, 'Darrell', 'Kock', 'Son', '218-799-0131', 'fortkockd@gmail.com', false
-);
-
-insert into visitor values(
-	673189203, 'Carly', 'Johnson', 'Sister', '651-771-0752', 'carly.leeper@yahoo.com', true
-);
-
-insert into visitor values(
-	0985263, 'Trung', 'Nguyen', 'Brother', '320-521-9090', 'trung.nguyen@go.minnstate.edu', true
-);
-
-insert into visitor values(
-	072368926, 'Crystal', 'Pace', 'Ex-Wife', '512-722-6767', 'crystalthebrystal@gmail.com', true
-);
-
 insert into visitor(visitor_id, first_name, last_name, relationship, phone_number) values(
 	07268932, 'Liam', 'Schulz', 'Cousin', '952-322-0828'
-);
-
-insert into visitor values(
-	275309143, 'Saul', 'Goodman', 'Lawyer', '505-560-4852', 'saulgoodman@saulgoodman.com', true
-);
-
-insert into visitor values(
-	97234509, 'Manning', 'Payton', 'Cousin', '218-954-7667', 'therealpayton@gmail.com', true
-);
-
-insert into visitor values(
-	05792835, 'Tracey', 'Montgomery', 'Wife', '320-330-5821', 'traceymont@hotmail.com', true
 );
 
 create table `staff`(
@@ -270,7 +236,6 @@ insert into visit(visit_id, inmate_id, visitor_id, staff_id, visit_date, duratio
 (15, 61372, 97234509, 2364078, '2025-10-08 09:30:00', 50),
 (16, 415883, 05792835, 2354071, '2025-11-07 15:00:00', 40);
 
-
 --  Derived value
 
 create view inmate_age as
@@ -282,9 +247,9 @@ CREATE VIEW cell_occupancy AS
 FROM cell c;
 
 -- Checks to see filled or overfilled cells exist
- select cell_id, block_id, capacity, occupancy from cell_occupancy where occupancy >= capacity;
+-- select cell_id, block_id, capacity, occupancy from cell_occupancy where occupancy >= capacity;
 
 -- Checks to see if inmate is in custody longer than should be
- -- select inmate_id, first_name, last_name, release_date, status from inmate where (datediff(curdate(), release_date)) >= 0 and status = 1;
+select inmate_id, first_name, last_name, release_date, status from inmate where (datediff(curdate(), release_date)) >= 0 and status = 1;
 
 -- select @@version;

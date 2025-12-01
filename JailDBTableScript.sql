@@ -83,49 +83,21 @@ create table `staff`(
     `email` varchar(255)
 );
 
-insert into staff(staff_id, first_name, last_name, role) values(
-	504237, 'Ethan', 'Larson', 1
-);
+insert into staff(staff_id, first_name, last_name, role) values
+	(504237, 'Ethan', 'Larson', 1),
+	(62702768, 'Dre', 'Harm', 4);
 
-insert into staff(staff_id, first_name, last_name, role) values(
-	62702768, 'Dre', 'Harm', 4
-);
+INSERT INTO staff VALUES
+    (76234896, 'Shimin', 'Li', 2, 1, '952-397-7718', 'shimin.li@go.winona.edu'),
+    (5728934, 'Boscar', 'Iyengar', 3, 1, '952-182-4549', 'iygenar@go.winona.edu'),
+    (2093746, 'Gerald', 'Cichanowski', 1, 1, '763-972-3355', 'gerald.cichanowski@go.winona.edu'),
+    (7852313, 'Mingrui', 'Zhang', 1, 1, '952-97-8450', 'mingrui.zhang@go.winona.edu'),
+    (2354071, 'Eric', 'Wright', 1, 2, '651-314-6307', 'eric.wright@go.winona.edu'),
+    (23540798, 'Nadia', 'Miranda', 1, 3, '612-581-3449', 'nadia.miranda@go.winona.edu'),
+    (2364078, 'Collin', 'Engstrom', 1, 3, '507-782-3990', 'collin.engstrom@go.winona.edu'),
+    (798253, 'George', 'Bush', 5, 1, '214-782-9338', 'georgebush@president.gov'),
+    (798534, 'Barack', 'Obama', 5, 2, '808-973-4789', 'barackobama@president.gov');
 
-insert into staff values(
-	76234896, 'Shimin', 'Li', 2, 1, '952-397-7718', 'shimin.li@go.winona.edu'
-);
-
-insert into staff values(
-	5728934, 'Boscar', 'Iyengar', 3, 1, '952-182-4549', 'iygenar@go.winona.edu'
-);
-
-insert into staff values(
-	2093746, 'Gerald', 'Cichanowski', 1, 1, '763-972-3355', 'gerald.cichanowski@go.winona.edu'
-);
-
-insert into staff values(
-	7852313, 'Mingrui', 'Zhang', 1, 1, '952-97-8450', 'mingrui.zhang@go.winona.edu'
-);
-
-insert into staff values(
-	2354071, 'Eric', 'Wright', 1, 2, '651-314-6307', 'eric.wright@go.winona.edu'
-);
-
-insert into staff values(
-	23540798, 'Nadia', 'Miranda', 1, 3, '612-581-3449', 'nadia.miranda@go.winona.edu'
-);
-
-insert into staff values(
-	2364078, 'Collin', 'Engstrom', 1, 3, '507-782-3990', 'collin.engstrom@go.winona.edu'
-);
-
-insert into staff values(
-	0798253, 'George', 'Bush', 5, 1, '214-782-9338', 'georgebush@president.gov'
-);
-
-insert into staff values(
-	0798534, 'Barack', 'Obama', 5, 2, '808-973-4789', 'barackobama@president.gov'
-);
 
 create table `block`(
 	`block_id` int primary key,
@@ -137,21 +109,12 @@ create table `block`(
     FOREIGN KEY (supervisor_id) REFERENCES staff(staff_id)
 );
 
-insert into `block` values(
-	1, 'A', 1, 30, 504237
-);
+insert into `block` values
+    (1, 'A', 1, 30, 504237),
+    (2, 'B', 2, 16, 23540798),
+    (3, 'C', 3, 16, 2354071),
+    (4, 'D', 4, 4, 2093746);
 
-insert into `block` values(
-	2, 'B', 2, 16, 23540798
-);
-
-insert into `block` values(
-	3, 'C', '3', '16', 2354071
-);
-
-insert into `block` values(
-	4, 'D', '4', 4, 2093746
-);
 
 create table `cell`(
 	`cell_id` int NOT NULL,
@@ -163,100 +126,33 @@ create table `cell`(
     FOREIGN KEY (block_id) references block(block_id)
 );
 
--- Block A
- 
-insert into cell values(
-	1, 1, 4, 1
-);
-
-insert into cell values(
-	2, 1, 4, 1
-);
-
-insert into cell values(
-	3, 1, 4, 1
-);
-
-insert into cell values(
-	4, 1, 2, 1
-);
-
-insert into cell values(
-	5, 1, 4, 1
-);
-
-insert into cell values(
-	6, 1, 4, 1
-);
-
-insert into cell values(
-	7, 1, 3, 1
-);
-
-insert into cell values(
-	8, 1, 3, 1
-);
-
-insert into cell values(
-	9, 1, 2, 1
-);
- 
- -- Block B
-
-insert into cell values(
-	1, 2, 4, 1
-);
-
-insert into cell values(
-	2, 2, 4, 1
-);
-
-insert into cell values(
-	3, 2, 4, 1
-);
-
-insert into cell values(
-	4, 2, 4, 1
-);
-
--- Block C 
-
-insert into cell values(
-	1, 3, 4, 2
-);
-
-insert into cell values(
-	2, 3, 4, 2
-);
-
-insert into cell values(
-	3, 3, 2, 2
-);
-
-insert into cell values(
-	4, 3, 4, 2
-);
-
-insert into cell values(
-	5, 3, 2, 2
-);
-
--- Block D 
-insert into cell values(
-	1, 4, 1, 4
-);
-
-insert into cell values(
-	2, 4, 1, 4
-);
-
-insert into cell values(
-	3, 4, 1, 4
-);
-
-insert into cell values(
-	4, 4, 1, 4
-);
+insert into cell values
+    -- Block A
+    (1, 1, 4, 1),
+    (2, 1, 4, 1),
+    (3, 1, 4, 1),
+    (4, 1, 2, 1),
+    (5, 1, 4, 1),
+    (6, 1, 4, 1),
+    (7, 1, 3, 1),
+    (8, 1, 3, 1),
+    (9, 1, 2, 1),
+    -- Block B
+    (1, 2, 4, 1),
+    (2, 2, 4, 1),
+    (3, 2, 4, 1),
+    (4, 2, 4, 1),
+    -- Block C
+    (1, 3, 4, 2),
+    (2, 3, 4, 2),
+    (3, 3, 2, 2),
+    (4, 3, 4, 2),
+    (5, 3, 2, 2),
+    -- Block D
+    (1, 4, 1, 4),
+    (2, 4, 1, 4),
+    (3, 4, 1, 4),
+    (4, 4, 1, 4);
 
 create table `inmate`(
 	`inmate_id` int primary key,
@@ -274,8 +170,8 @@ create table `inmate`(
     FOREIGN KEY (block_id, cell_id) REFERENCES cell(block_id, cell_id)
 );
 
-INSERT INTO `INMATE` VALUES
-	(58148, 1, 1, 'Anthony', 'Arreola', '1987-04-20', 1, '2025-08-23', '2025-08-23', 1, 1),
+INSERT INTO inmate VALUES
+	(58148, 1, 1, 'Anthony', 'Arreola', '1987-04-20', 1, '2025-08-23', '2025-12-01', 1, 1),
     (376003, 1, 1, 'Benjamin', 'Blaschka', '1977-06-25', 1, '2025-11-21', '2026-11-21', 1, 1),
     (5540, 1, 2, 'Trisha', 'Fenske', '1974-09-13', 2, '2025-11-25', '2026-11-25', 1, 1),
     (1207523, 1, 2, 'Jessica', 'Freeborn', '1986-02-08', 2, '2025-11-15', '2026-02-15', 1, 1),
@@ -374,6 +270,9 @@ insert into visit(visit_id, inmate_id, visitor_id, staff_id, visit_date, duratio
 (15, 61372, 97234509, 2364078, '2025-10-08 09:30:00', 50),
 (16, 415883, 05792835, 2354071, '2025-11-07 15:00:00', 40);
 
+
+--  Derived value
+
 create view inmate_age as
 	select *, floor(datediff(curdate(), dob)/365) as age from inmate;
   
@@ -382,5 +281,10 @@ CREATE VIEW cell_occupancy AS
     (SELECT COUNT(*) FROM inmate i WHERE i.block_id = c.block_id AND i.cell_id  = c.cell_id) AS occupancy
 FROM cell c;
 
-select * from cell_occupancy;
+-- Checks to see filled or overfilled cells exist
+ select cell_id, block_id, capacity, occupancy from cell_occupancy where occupancy >= capacity;
+
+-- Checks to see if inmate is in custody longer than should be
+ -- select inmate_id, first_name, last_name, release_date, status from inmate where (datediff(curdate(), release_date)) >= 0 and status = 1;
+
 -- select @@version;
